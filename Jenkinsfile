@@ -4,17 +4,17 @@ pipeline {
     stages {
         stage('init') {
             steps {
-                terraform init
+                sh terraform init
             }
         }
         stage('fmt') {
             steps {
-                terraform fmt
+                sh terraform fmt
             }
         }
         stage('plan') {
             steps {
-                terraform plan
+                sh terraform plan
             }
         }
     }
