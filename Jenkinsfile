@@ -2,20 +2,22 @@ pipeline {
     agent any
 
     stages {
-        stage('init') {
+        stage('Checkout') {
             steps {
-                sh terraform init
+                // this git repo 
+                checkout scm 
+         }
+        }
+        stage('Terraform init') {
+            steps {
+                sh 'terraform init'
             }
         }
-        stage('fmt') {
+        stage('Terraform apply') {
             steps {
-                sh terraform fmt
+                sh 'terraform apply --auto-approve'
             }
         }
-        stage('plan') {
-            steps {
-                sh terraform plan
-            }
-        }
+        
     }
 }
